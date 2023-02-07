@@ -28,6 +28,7 @@ public class Cart {
 
     public void deleteRealItem(RealItem item) {
         realItems.remove(item);
+        total += -item.getPrice() - item.getPrice()*TAX;
     }
 
     public void addVirtualItem(VirtualItem item) {
@@ -37,6 +38,7 @@ public class Cart {
 
     public void deleteVirtualItem(VirtualItem item) {
         virtualItems.remove(item);
+        total += -item.getPrice() - item.getPrice()*TAX;
     }
 
     public void showItems() {
