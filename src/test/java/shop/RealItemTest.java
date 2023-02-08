@@ -1,7 +1,7 @@
 package shop;
 
 import org.junit.Assert;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 public class RealItemTest {
     private RealItem car;

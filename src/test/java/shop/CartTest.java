@@ -1,15 +1,14 @@
 package shop;
 
 import org.junit.Assert;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.Before;
 
 public class CartTest {
     private Cart testCart;
     private RealItem car;
     private VirtualItem disk;
-
-    @BeforeEach
+    @Before
     public void createItems() {
         testCart = new Cart("testCart");
 
@@ -37,6 +36,6 @@ public class CartTest {
     public void testDeleteVirtualItem() {
         testCart.deleteVirtualItem(disk);
 
-        Assert.assertEquals(60000.0, testCart.getTotalPrice(), 1);
+        Assert.assertEquals(60000, testCart.getTotalPrice(), 1);
     }
 }

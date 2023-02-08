@@ -2,22 +2,21 @@ package parser;
 
 import jdk.nashorn.internal.ir.annotations.Ignore;
 
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
 import shop.Cart;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-
 public class JsonParserTest {
     private Cart testCart;
     private Cart parsedTestCart;
 
-    @BeforeTest
+    @Before
     public void writeToFile() {
         testCart = new Cart("testCart");
         JsonParser parser = new JsonParser();
@@ -47,7 +46,7 @@ public class JsonParserTest {
         Assert.assertEquals("File src/main/resources/yui.json not found!", exception.getMessage());
     }
 
-    @AfterTest
+    @After
     public void deleteTestFile() throws IOException {
         Files.delete(Paths.get("src/main/resources/" + testCart.getCartName() + ".json"));
     }
