@@ -1,11 +1,9 @@
 package parser;
 
+import com.google.gson.JsonSyntaxException;
 import jdk.nashorn.internal.ir.annotations.Ignore;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.jupiter.api.Assertions;
 import shop.Cart;
 
@@ -44,6 +42,43 @@ public class JsonParserTest {
             parser.readFromFile(new File("src/main/resources/yui"));
         });
         Assert.assertEquals("File src/main/resources/yui.json not found!", exception.getMessage());
+    }
+    @Test
+    public void testOtherExceptions() {
+        //testNoRealItem
+        Assertions.assertThrows(NullPointerException.class, () -> {
+            JsonParser parser = new JsonParser();
+            Cart cart = parser.readFromFile(new File("src/main/resources/noRealItem.json"));
+            cart.showItems();
+        });
+
+        //testNoVirtualItem
+        Assertions.assertThrows(NullPointerException.class, () -> {
+            JsonParser parser = new JsonParser();
+            Cart cart = parser.readFromFile(new File("src/main/resources/noVirtualItem.json"));
+            cart.showItems();
+        });
+
+        //errorInJSONSyntax
+        Assertions.assertThrows(JsonSyntaxException.class, () -> {
+            JsonParser parser = new JsonParser();
+            Cart cart = parser.readFromFile(new File("src/main/resources/syntaxError.json"));
+            cart.showItems();
+        });
+
+        //fileIsEmpty
+        Assertions.assertThrows(NullPointerException.class, () -> {
+            JsonParser parser = new JsonParser();
+            Cart cart = parser.readFromFile(new File("src/main/resources/emptyFile.json"));
+            Assert.assertNull(cart.getCartName());
+        });
+
+        //noCartName
+        Assertions.assertThrows(ComparisonFailure.class, () -> {
+            JsonParser parser = new JsonParser();
+            Cart cart = parser.readFromFile(new File("src/main/resources/noCartName.json"));
+            Assert.assertEquals(cart.getCartName(), "noCartName");
+        });
     }
 
     @After

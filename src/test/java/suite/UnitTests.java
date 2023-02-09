@@ -15,5 +15,5 @@ import shop.VirtualItemTest;
         CartTest.class,
         JsonParserTest.class
 })
-public class Suite1 {
+public class UnitTests {
 }
