@@ -3,8 +3,8 @@
 <suite name="AllTests">
     <test name="AllTests">
         <packages>
-            <package name="TestNG.parser"/>
-            <package name="TestNG.shop"/>
+            <package name="testng.parser"/>
+            <package name="testng.shop"/>
         </packages>
     </test>
 </suite>

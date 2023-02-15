@@ -3,7 +3,7 @@
 <suite name="excludeMethods">
     <test name="excludeMethods">
         <classes>
-            <class name="TestNG.parser.JsonParserTestNG">
+            <class name="testng.parser.JsonParserTestNG">
                 <methods>
                     <include name="testReadCartNameFromFile"/>
                     <exclude name="testFileNotFoundException"/>

@@ -1,4 +1,4 @@
-package TestNG.shop;
+package testng.shop;
 
 import static org.testng.Assert.assertEquals;
 import org.testng.annotations.Test;
@@ -13,6 +13,6 @@ public class VirtualItemTestNG {
         disk.setPrice(19.99);
         disk.setSizeOnDisk(1000);
 
-        assertEquals(1000, disk.getSizeOnDisk());
+        assertEquals(1000, disk.getSizeOnDisk(), "An item must have a size value on disk set at creation");
     }
 }

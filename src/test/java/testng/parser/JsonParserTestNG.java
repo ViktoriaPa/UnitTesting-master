@@ -1,4 +1,4 @@
-package TestNG.parser;
+package testng.parser;
 
 import com.google.gson.JsonSyntaxException;
 import org.testng.annotations.AfterClass;
@@ -31,14 +31,14 @@ public class JsonParserTestNG {
     public void testFileNotNull() {
         JsonParser parser = new JsonParser();
         parsedTestCart = parser.readFromFile(new File("src/main/resources/testCart.json"));
-        assertNotNull(parsedTestCart);
+        assertNotNull(parsedTestCart, "The file must not be empty");
     }
 
     @Test (groups = {"TestJsonParserClass"})
     public void testReadCartNameFromFile() {
         JsonParser parser = new JsonParser();
         parsedTestCart = parser.readFromFile(new File("src/main/resources/testCart.json"));
-        assertEquals("testCart", parsedTestCart.getCartName());
+        assertEquals("testCart", parsedTestCart.getCartName(), "The file must have a cart name");
     }
 
     @Test (groups = {"TestExceptions"}, expectedExceptions = NoSuchFileException.class, expectedExceptionsMessageRegExp = "File src/main/resources/yui.json not found!")
@@ -72,14 +72,14 @@ public class JsonParserTestNG {
     public void fileIsEmpty() {
         JsonParser parser = new JsonParser();
         Cart cart = parser.readFromFile(new File("src/main/resources/emptyFile.json"));
-        assertNull(cart.getCartName());
+        assertNull(cart.getCartName(), "The parsed file is empty. An exception must appear");
     }
 
     @Test (groups = {"TestExceptions"}, expectedExceptions = {AssertionError.class})
     public void noCartName() {
         JsonParser parser = new JsonParser();
         Cart cart = parser.readFromFile(new File("src/main/resources/noCartName.json"));
-        assertEquals(cart.getCartName(), "noCartName");
+        assertEquals(cart.getCartName(), "noCartName", "The parsed file doesn't have a cart name. An exception must appear");
     }
 
     @AfterClass

@@ -1,4 +1,4 @@
-package TestNG.shop;
+package testng.shop;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -33,13 +33,13 @@ public class CartTestNG {
     public void testDeleteRealItem() {
         testCart.deleteRealItem(car);
 
-        assertEquals(24.0, testCart.getTotalPrice());
+        assertEquals(24.0, testCart.getTotalPrice(), "The total amount must decrease after the item is deleted");
     }
 
     @Test (groups = {"TestCartClass"})
     public void testDeleteVirtualItem() {
         testCart.deleteVirtualItem(disk);
 
-        assertEquals(0.0, testCart.getTotalPrice());
+        assertEquals(0.0, testCart.getTotalPrice(), "The total amount must decrease after the item is deleted");
     }
 }

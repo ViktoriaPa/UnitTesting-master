@@ -1,4 +1,4 @@
-package TestNG.shop;
+package testng.shop;
 
 import static org.testng.Assert.assertEquals;
 import org.testng.annotations.Test;
@@ -14,6 +14,6 @@ public class RealItemTestNG {
         car.setPrice(50000.0);
         car.setWeight(1000.0);
 
-        assertEquals(1000.0, car.getWeight());
+        assertEquals(1000.0, car.getWeight(), "An item must have a weight set at creation");
     }
 }
