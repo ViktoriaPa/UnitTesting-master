@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="excludeMethods">
+    <test name="excludeMethods">
+        <classes>
+            <class name="testng.parser.JsonParserTestNG">
+                <methods>
+                    <include name="testReadCartNameFromFile"/>
+                    <exclude name="testFileNotFoundException"/>
+                    <exclude name="testNoRealItem"/>
+                    <exclude name="testNoVirtualItem"/>
+                    <exclude name="errorInJSONSyntax"/>
+                    <exclude name="fileIsEmpty"/>
+                    <exclude name="noCartName"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

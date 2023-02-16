@@ -1,7 +1,6 @@
 package parser;
 
 import com.google.gson.JsonSyntaxException;
-import jdk.nashorn.internal.ir.annotations.Ignore;
 
 import org.junit.*;
 import org.junit.jupiter.api.Assertions;
