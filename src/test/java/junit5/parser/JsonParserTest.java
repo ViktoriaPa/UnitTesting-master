@@ -1,9 +1,11 @@
-package parser;
+package junit5.parser;
 
 import com.google.gson.JsonSyntaxException;
 
 import org.junit.*;
 import org.junit.jupiter.api.Assertions;
+import parser.JsonParser;
+import parser.NoSuchFileException;
 import shop.Cart;
 
 import java.io.*;
