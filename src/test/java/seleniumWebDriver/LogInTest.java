@@ -13,6 +13,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
+import static seleniumWebDriver.LocatorsConstants.*;
+import static seleniumWebDriver.MainConstants.*;
+
 public class LogInTest {
     private WebDriver driver;
 
@@ -23,27 +26,27 @@ public class LogInTest {
 
     @Test
     void logInTest () {
-        driver.get("https://mail.yandex.com");
-        WebElement logInButton = driver.findElement(By.xpath("//a[@href='https://passport.yandex.com/auth?retpath=https%3A%2F%2Fmail.yandex.com']"));
+        driver.get(LINK_MAIN_PAGE);
+        WebElement logInButton = driver.findElement(By.xpath(LOCATOR_LOGIN_BUTTON_ON_MAIN_PAGE));
         logInButton.click();
 
-        WebElement usernameField = driver.findElement(By.id("passp-field-login"));
-        usernameField.sendKeys("v1k.pa");
+        WebElement usernameField = driver.findElement(By.id(LOCATOR_USERNAME_FIELD));
+        usernameField.sendKeys(USERNAME);
 
-        WebElement submitUsername = driver.findElement(By.id("passp:sign-in"));
+        WebElement submitUsername = driver.findElement(By.id(LOCATOR_LOGIN_BUTTON_ON_USERNAME_PAGE));
         submitUsername.click();
 
-        WebElement passwordField = driver.findElement(By.id("passp-field-passwd"));
-        passwordField.sendKeys("v1k.papass");
+        WebElement passwordField = driver.findElement(By.id(LOCATOR_PASSWORD_FIELD));
+        passwordField.sendKeys(PASSWORD);
 
-        WebElement loginButton = driver.findElement(By.id("passp:sign-in"));
+        WebElement loginButton = driver.findElement(By.id(LOCATOR_LOGIN_BUTTON_ON_PASSWORD_PAGE));
         loginButton.click();
 
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.urlContains("https://mail.yandex.com/"));
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.urlContains(LINK_MAIN_PAGE));
 
         String actualTitle = driver.getTitle();
         String expectedTitle = "Inbox — Yandex Mail";
-        Assert.assertEquals(expectedTitle, actualTitle);
+        Assert.assertEquals("The title must be \"Inbox — Yandex Mail\"", expectedTitle, actualTitle);
     }
 
     @AfterEach
