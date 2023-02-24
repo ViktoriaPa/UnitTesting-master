@@ -1,11 +1,11 @@
-package suite;
+package junit5.suite;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
-import parser.JsonParserTest;
-import shop.CartTest;
-import shop.RealItemTest;
-import shop.VirtualItemTest;
+import junit5.parser.JsonParserTest;
+import junit5.shop.CartTest;
+import junit5.shop.RealItemTest;
+import junit5.shop.VirtualItemTest;
 
 @RunWith(Suite.class)
 

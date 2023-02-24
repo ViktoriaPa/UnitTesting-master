@@ -1,8 +1,11 @@
-package shop;
+package junit5.shop;
 
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.Before;
+import shop.Cart;
+import shop.RealItem;
+import shop.VirtualItem;
 
 public class CartTest {
     private final static int ADMISSIBLE_ERROR_BETWEEN_ER_AND_AR = 1;

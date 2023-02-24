@@ -1,7 +1,8 @@
-package shop;
+package junit5.shop;
 
 import org.junit.Assert;
 import org.junit.Test;
+import shop.VirtualItem;
 
 public class VirtualItemTest {
     private VirtualItem disk;
