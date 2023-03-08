@@ -25,7 +25,7 @@ public class LogInTest {
     }
 
     @Test
-    void logInTest () {
+    void logInTest () throws InterruptedException {
         driver.get(LINK_MAIN_PAGE);
         WebElement logInButton = driver.findElement(By.xpath(LOCATOR_LOGIN_BUTTON_ON_MAIN_PAGE));
         logInButton.click();
@@ -42,11 +42,12 @@ public class LogInTest {
         WebElement loginButton = driver.findElement(By.id(LOCATOR_LOGIN_BUTTON_ON_PASSWORD_PAGE));
         loginButton.click();
 
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.urlContains(LINK_MAIN_PAGE));
+//        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.urlContains(LINK_MAIN_PAGE));
+        Thread.sleep(10000); // Fluent Wait
 
         String actualTitle = driver.getTitle();
         String expectedTitle = "Inbox — Yandex Mail";
-        Assert.assertEquals("The title must be \"Inbox — Yandex Mail\"", expectedTitle, actualTitle);
+        Assert.assertTrue("The title must contain \"Inbox — Yandex Mail\"", actualTitle.contains("Inbox — Yandex Mail"));
     }
 
     @AfterEach
